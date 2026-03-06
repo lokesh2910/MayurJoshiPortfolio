@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Mayur Joshi | UI/UX Designer Portfolio</title>
+    <title>Mayur Joshi · UI/UX Designer (responsive)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
     <style>
+        /* ----- ultra responsive reset & vars ----- */
+        * { margin:0; padding:0; box-sizing:border-box; }
         :root {
             --primary: #6366f1;       
             --primary-dark: #4f46e5;
@@ -16,110 +18,119 @@
             --gray: #334155;
             --light: #f8fafc;
         }
-
-        * { margin:0; padding:0; box-sizing:border-box; }
-
         body {
-            font-family: 'Inter', system-ui, sans-serif;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
             background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
             color: var(--dark);
-            line-height: 1.6;
+            line-height: 1.5;
             min-height: 100vh;
+            width: 100%;
+            overflow-x: hidden;
         }
+        img { max-width: 100%; height: auto; display: block; }
 
+        /* container – fluid but max-width */
         .container { 
+            width: 100%;
             max-width: 1400px; 
             margin: 0 auto; 
             padding: 0 1.5rem; 
         }
 
-        /* ====================== HERO ====================== */
+        /* ----- HERO – fluid, no overflow ----- */
         header {
             background: linear-gradient(135deg, var(--dark) 0%, #1e293b 100%);
             color: white;
-            padding: 8rem 0 6rem;
+            padding: clamp(4rem, 10vw, 8rem) 0 clamp(3rem, 6vw, 6rem);
             position: relative;
             overflow: hidden;
+            width: 100%;
         }
-
         header::before {
             content: '';
             position: absolute;
             top: -50%; left: -50%;
             width: 200%; height: 200%;
             background: radial-gradient(circle at 30% 20%, rgba(99,102,241,0.15) 0%, transparent 50%);
+            pointer-events: none;
         }
-
-        .hero-content { text-align: center; position: relative; z-index: 2; }
-
+        .hero-content { 
+            text-align: center; 
+            position: relative; 
+            z-index: 2;
+            width: 100%;
+        }
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(3rem, 7vw, 6.5rem);
-            margin-bottom: 1rem;
-            letter-spacing: -1px;
+            font-size: clamp(2.5rem, 8vw, 6.5rem);
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.02em;
             background: linear-gradient(90deg, #c084fc, #a78bfa, #818cf8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            line-height: 1.1;
         }
-
         .tagline { 
-            font-size: clamp(1.1rem, 3.5vw, 1.4rem); 
+            font-size: clamp(1rem, 3.5vw, 1.4rem); 
             max-width: 700px; 
-            margin: 0 auto 2.5rem; 
+            margin: 0 auto 2rem; 
             opacity: 0.9; 
+            padding: 0 0.5rem;
         }
-
         .profile-photo {
-            width: 180px; 
-            height: 180px;
+            width: min(180px, 30vw);
+            height: min(180px, 30vw);
             border-radius: 50%; 
             object-fit: cover;
             border: 6px solid rgba(255,255,255,0.15);
             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            margin-bottom: 2rem;
+            margin: 0 auto 1.5rem;
             transition: transform 0.4s ease;
         }
-
-        .profile-photo:hover { transform: scale(1.08) rotate(3deg); }
+        .profile-photo:hover { transform: scale(1.08) rotate(2deg); }
 
         .contact-bar {
             display: flex; 
             justify-content: center; 
-            gap: 1.8rem; 
+            gap: clamp(1rem, 3vw, 2rem); 
             flex-wrap: wrap; 
             margin-top: 1.5rem;
+            padding: 0 0.5rem;
         }
-
         .contact-item {
             display: flex; 
             align-items: center; 
-            gap: 0.7rem; 
-            font-size: 1.1rem; 
+            gap: 0.5rem; 
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem); 
             opacity: 0.95;
+            white-space: nowrap;
+            flex-wrap: wrap;
+            justify-content: center;
         }
-
         .contact-item a { 
             color: white; 
             text-decoration: none; 
             transition: color 0.3s; 
+            word-break: break-all;
         }
         .contact-item a:hover { color: var(--primary); }
 
-        /* ====================== SECTIONS ====================== */
-        section { padding: 6rem 0; }
+        /* sections spacing */
+        section { padding: clamp(3rem, 8vw, 6rem) 0; }
 
         h2 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2.4rem, 5vw, 3rem);
+            font-size: clamp(2rem, 6vw, 3rem);
             text-align: center; 
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
             color: var(--primary-dark); 
             position: relative;
+            line-height: 1.2;
         }
-
         h2::after {
             content: ''; 
             width: 80px; 
+            max-width: 30%;
             height: 4px; 
             background: var(--primary);
             position: absolute; 
@@ -129,185 +140,214 @@
             border-radius: 2px;
         }
 
+        /* ----- main two-col layout – fully responsive ----- */
         .portfolio-grid { 
             display: grid; 
             grid-template-columns: 1fr 3fr; 
-            gap: 4rem; 
+            gap: 2rem; 
         }
 
+        /* sidebar – fluid inside */
         .sidebar {
             background: white; 
-            border-radius: 16px; 
-            padding: 2.5rem;
+            border-radius: 24px; 
+            padding: clamp(1.5rem, 4vw, 2.5rem);
             box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
             height: fit-content;
             position: sticky; 
-            top: 2rem;
+            top: 1.5rem;
+            transition: all 0.2s;
+            word-break: break-word;
         }
-
         .sidebar h3 { 
-            font-size: 1.5rem; 
-            margin-bottom: 1.5rem; 
+            font-size: clamp(1.3rem, 3vw, 1.5rem); 
+            margin-bottom: 1.2rem; 
             color: var(--primary-dark); 
         }
-
         .sidebar ul { list-style: none; }
-
         .sidebar li { 
-            margin-bottom: 0.9rem; 
-            font-size: 1.05rem; 
+            margin-bottom: 0.8rem; 
+            font-size: clamp(0.95rem, 2vw, 1.05rem); 
             color: var(--gray); 
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .sidebar li::before {
+            content: "▹";
+            color: var(--primary);
+            font-weight: bold;
         }
 
+        /* main cards */
         .main-content { 
             display: flex; 
             flex-direction: column; 
-            gap: 4rem; 
+            gap: 2.5rem; 
         }
-
         .card {
             background: white; 
-            border-radius: 16px; 
-            padding: 2.5rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-radius: 24px; 
+            padding: clamp(1.8rem, 5vw, 2.8rem);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
         }
-
         .card:hover { 
-            transform: translateY(-8px); 
-            box-shadow: 0 20px 50px rgba(99,102,241,0.15); 
+            transform: translateY(-6px); 
+            box-shadow: 0 20px 40px rgba(99,102,241,0.12); 
         }
-
         .card h3 { 
             color: var(--primary-dark); 
-            font-size: 1.8rem; 
-            margin-bottom: 0.8rem; 
+            font-size: clamp(1.4rem, 4vw, 1.8rem); 
+            margin-bottom: 0.3rem; 
+            line-height: 1.3;
         }
-
         .card .subtitle { 
             color: #64748b; 
             font-style: italic; 
             margin-bottom: 1.2rem; 
             display: block; 
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
         }
-
         .card ul { 
-            padding-left: 1.4rem; 
-            margin-top: 1rem; 
+            padding-left: 1.2rem; 
+            margin-top: 0.8rem; 
         }
-
         .card li { 
-            margin-bottom: 0.7rem; 
+            margin-bottom: 0.6rem; 
             color: var(--gray); 
+            font-size: clamp(0.95rem, 2.2vw, 1.05rem);
         }
 
-        /* ====================== PROJECTS ====================== */
+        /* ----- project cards – super fluid grid ----- */
         #projects .projects-grid {
             display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem; 
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+            gap: 1.8rem; 
+            margin-top: 2rem;
         }
-
         .project-card {
             background: white; 
-            border-radius: 12px; 
+            border-radius: 20px; 
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            transition: all 0.35s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            width: 100%;
         }
-
         .project-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 25px 60px rgba(99,102,241,0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 25px 45px rgba(99,102,241,0.18);
         }
-
         .project-image {
             width: 100%;
-            height: 220px;
+            aspect-ratio: 16 / 10;
             object-fit: cover;
             display: block;
+            background: #e2e8f0; /* soft placeholder */
         }
-
-        .project-info { padding: 1.5rem; }
-
+        .project-info { 
+            padding: 1.5rem 1.2rem 1.5rem; 
+            flex: 1;
+        }
         .project-info h4 { 
-            font-size: 1.35rem; 
-            margin-bottom: 0.5rem; 
+            font-size: 1.3rem; 
+            margin-bottom: 0.4rem; 
+            line-height: 1.3;
         }
-
+        .project-info p {
+            color: #475569;
+            font-size: 0.95rem;
+        }
         .view-project {
             display: inline-block; 
             margin-top: 1rem;
             color: var(--primary); 
             font-weight: 600; 
             text-decoration: none;
+            font-size: 0.98rem;
         }
-
         .view-project:hover { text-decoration: underline; }
 
-        /* ====================== FOOTER ====================== */
+        /* footer */
         footer {
             background: var(--dark); 
             color: white; 
             text-align: center;
-            padding: 4rem 0 2rem;
+            padding: 3rem 0 2rem;
+            width: 100%;
         }
-
         footer a { 
             color: var(--primary); 
             text-decoration: none; 
         }
+        footer p { font-size: clamp(0.9rem, 2.5vw, 1rem); }
 
-        /* ====================== RESPONSIVE ====================== */
-        @media (max-width: 1024px) {
+        /* ========== SUPER RESPONSIVE BREAKPOINTS ========== */
+        @media (max-width: 1100px) {
+            .portfolio-grid { 
+                gap: 1.5rem; 
+            }
+        }
+
+        @media (max-width: 900px) {
             .portfolio-grid { 
                 grid-template-columns: 1fr; 
             }
             .sidebar { 
                 position: static; 
+                margin-bottom: 0.5rem;
             }
         }
 
-        @media (max-width: 768px) {
-            header { padding: 6rem 0 4rem; }
+        @media (max-width: 600px) {
             .container { padding: 0 1rem; }
-            section { padding: 4.5rem 0; }
-            .card { padding: 2rem; }
-            .projects-grid { 
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
-                gap: 1.5rem; 
+            .contact-bar { 
+                flex-direction: column; 
+                align-items: center;
+                gap: 0.75rem;
             }
-            .project-image { height: 200px; }
+            .contact-item { 
+                white-space: normal; 
+                justify-content: center;
+                width: 100%;
+            }
+            .card { padding: 1.5rem; }
+            h2 { margin-bottom: 2rem; }
+            h2::after { width: 60px; }
+            .projects-grid { gap: 1rem; }
         }
 
-        @media (max-width: 480px) {
-            header { padding: 5rem 0 3.5rem; }
+        @media (max-width: 380px) {
             .profile-photo { 
-                width: 140px; 
-                height: 140px; 
+                width: 130px; 
+                height: 130px; 
             }
-            .tagline { margin-bottom: 2rem; }
-            .contact-bar { gap: 1.2rem; }
-            .contact-item { font-size: 0.98rem; }
-            h2 { font-size: 2.2rem; margin-bottom: 2rem; }
-            section { padding: 3.5rem 0; }
-            .card { padding: 1.8rem; }
-            .project-image { height: 180px; }
-            .projects-grid { gap: 1.2rem; }
+            .project-info h4 { font-size: 1.2rem; }
+            .sidebar li { font-size: 0.9rem; }
         }
 
-        @media (max-width: 360px) {
-            .project-image { height: 160px; }
+        /* touch optimization */
+        @media (hover: none) {
+            .card:hover, .project-card:hover { transform: none; }
+            .profile-photo:hover { transform: none; }
         }
+
+        /* ensure no horizontal scroll */
+        html, body { overflow-x: hidden; }
+        * { max-width: 100%; }
     </style>
 </head>
 <body>
 
     <header>
         <div class="container hero-content">
+            <!-- using exactly the same image names – they exist -->
             <img src="PhotoMayur.jpg" 
-                 alt="Mayur Joshi" class="profile-photo">
+                 alt="Mayur Joshi" class="profile-photo" loading="lazy">
 
             <h1>Mayur Joshi</h1>
             <p class="tagline">UI/UX Designer crafting intuitive, AI-enhanced digital experiences for SaaS, Web Apps, LMS, E-commerce & Dashboards</p>
@@ -337,7 +377,7 @@
                     <li>AI Tools (Midjourney, Adobe Firefly)</li>
                 </ul>
 
-                <h3 style="margin-top: 2.5rem;">Languages</h3>
+                <h3 style="margin-top: 2.2rem;">Languages</h3>
                 <ul>
                     <li>Marathi</li>
                     <li>Hindi</li>
@@ -345,21 +385,22 @@
                     <li>Sanskrit</li>
                 </ul>
 
-                <h3 style="margin-top: 2.5rem;">Location</h3>
-                <p>Pune, Maharashtra, India</p>
+                <h3 style="margin-top: 2.2rem;">Location</h3>
+                <p style="color: var(--gray);">Pune, Maharashtra, India</p>
             </aside>
 
             <main class="main-content">
 
-                <!-- About, Experience, Education sections remain exactly the same as before -->
+                <!-- About -->
                 <section id="about" class="card">
                     <h2>About Me</h2>
-                    <p>UI/UX Designer based in Pune, specializing in human-centered, usability-focused design for SaaS products, education platforms, fintech, logistics, HR analytics, dashboards, and e-commerce. Experienced in end-to-end design: user research, wireframing, high-fidelity UI, prototyping, AI-powered workflows, developer collaboration, and Agile delivery. Passionate about creating scalable, intuitive digital experiences that drive user satisfaction and business impact.</p>
+                    <p style="font-size: clamp(1rem, 2.2vw, 1.08rem);">UI/UX Designer based in Pune, specializing in human-centered, usability-focused design for SaaS products, education platforms, fintech, logistics, HR analytics, dashboards, and e-commerce. Experienced in end-to-end design: user research, wireframing, high-fidelity UI, prototyping, AI-powered workflows, developer collaboration, and Agile delivery. Passionate about creating scalable, intuitive digital experiences that drive user satisfaction and business impact.</p>
                 </section>
 
+                <!-- Experience -->
                 <section id="experience">
                     <h2>Experience</h2>
-                    <!-- Experience cards (unchanged) -->
+                    <!-- card 1 -->
                     <div class="card">
                         <h3>Brainlines Solutions Pvt. Ltd.</h3>
                         <span class="subtitle">User Experience Designer / UI Designer  •  Sep 2024 – Present</span>
@@ -406,89 +447,82 @@
                     </div>
                 </section>
 
+                <!-- Education -->
                 <section id="education" class="card">
                     <h2>Education</h2>
-                    <ul style="list-style:none; font-size:1.1rem; color:var(--gray);">
-                        <li><strong>MIT World Peace University</strong> — Bachelor's of Fine Arts (Applied Arts), Design and Visual Communications (Jul 2022 – May 2023)</li>
-                        <li><strong>Abhinav Kala Mahavidyalay, Tilak Road</strong> — G.D. Art, Illustration (2017 – 2022)</li>
-                        <li><strong>Abhinav Vidyalay</strong> — Diploma in Commercial Arts (G.D. Arts)</li>
-                        <li><strong>MIT Group of Institutions, Kothrud, Pune</strong> — B.F.A. (Bachelor in Commercial Arts)</li>
+                    <ul style="list-style:none; padding-left:0; color:var(--gray);">
+                        <li style="margin-bottom:1rem;"><strong>MIT World Peace University</strong> — Bachelor's of Fine Arts (Applied Arts), Design and Visual Communications (Jul 2022 – May 2023)</li>
+                        <li style="margin-bottom:1rem;"><strong>Abhinav Kala Mahavidyalay, Tilak Road</strong> — G.D. Art, Illustration (2017 – 2022)</li>
+                        <li style="margin-bottom:1rem;"><strong>Abhinav Vidyalay</strong> — Diploma in Commercial Arts (G.D. Arts)</li>
+                        <li style="margin-bottom:1rem;"><strong>MIT Group of Institutions, Kothrud, Pune</strong> — B.F.A. (Bachelor in Commercial Arts)</li>
                     </ul>
                 </section>
 
-                <!-- PROJECTS with real images -->
-                <section id="projects" class="card">
+                <!-- PROJECTS – responsive grid (exact same images) -->
+                <section id="projects" class="card" style="padding-bottom: 2rem;">
                     <h2>Selected Projects</h2>
-                    <p style="text-align:center; margin-bottom:2rem; color:#64748b;">Real project visuals • Works perfectly on mobile, tablet & desktop</p>
+                    <p style="text-align:center; margin-bottom:1.8rem; color:#64748b;">Real project visuals • Works perfectly on mobile, tablet & desktop</p>
 
                     <div class="projects-grid">
-
+                        <!-- card 1 -->
                         <div class="project-card">
-                            <img src="Tableau.jpeg" alt="Company Risk Analysis" class="project-image">
+                            <img src="Tableau.jpeg" alt="Company Risk Analysis" class="project-image" loading="lazy">
                             <div class="project-info">
                                 <h4>Company Risk Analysis (Tableau)</h4>
-                                <p>Interactive risk analytics dashboard visualizing complex data with clarity.</p>
+                                <p>Interactive risk analytics dashboard visualizing complex data.</p>
                                 <a href="https://www.behance.net/gallery/237802699/Company-Risk-analysis-(Tableau-Dashboard-Design)" target="_blank" class="view-project">View on Behance →</a>
                             </div>
                         </div>
-
                         <div class="project-card">
-                            <img src="HR.jpeg" alt="HR Analytics" class="project-image">
+                            <img src="HR.jpeg" alt="HR Analytics" class="project-image" loading="lazy">
                             <div class="project-info">
                                 <h4>HR Analytics Application</h4>
-                                <p>Modern HR dashboard focused on people analytics & actionable insights.</p>
+                                <p>Modern HR dashboard focused on people analytics & insights.</p>
                                 <a href="https://www.behance.net/gallery/238087785/HR-Analytics" target="_blank" class="view-project">View on Behance →</a>
                             </div>
                         </div>
-
                         <div class="project-card">
-                            <img src="Ascent.jpeg" alt="Ascent Fintech" class="project-image">
+                            <img src="Ascent.jpeg" alt="Ascent Fintech" class="project-image" loading="lazy">
                             <div class="project-info">
                                 <h4>Ascent – Fintech Application</h4>
-                                <p>AI-powered fintech app casestudy – Level Up Your Money Life.</p>
+                                <p>AI-powered fintech case study – Level Up Your Money Life.</p>
                                 <a href="https://www.behance.net/gallery/238882993/Fintech-Application" target="_blank" class="view-project">View on Behance →</a>
                             </div>
                         </div>
-
                         <div class="project-card">
-                            <img src="BookMyShow.jpeg" alt="BookMyShow Redesign" class="project-image">
+                            <img src="BookMyShow.jpeg" alt="BookMyShow Redesign" class="project-image" loading="lazy">
                             <div class="project-info">
                                 <h4>BookMyShow App Redesign</h4>
-                                <p>Complete mobile app redesign improving user flow & engagement.</p>
+                                <p>Complete mobile app redesign improving user flow.</p>
                                 <a href="https://www.behance.net/gallery/188099933/Bookmyshow-App-Redesign-Casestudy" target="_blank" class="view-project">View on Behance →</a>
                             </div>
                         </div>
-
                         <div class="project-card">
-                            <img src="KPI.jpeg" alt="KPI Indicator" class="project-image">
+                            <img src="KPI.jpeg" alt="KPI Indicator" class="project-image" loading="lazy">
                             <div class="project-info">
                                 <h4>KPI Indicator Application</h4>
                                 <p>Dynamic KPI tracking dashboard for performance monitoring.</p>
                                 <a href="https://www.behance.net/gallery/238014705/KPI-Indecator-Application" target="_blank" class="view-project">View on Behance →</a>
                             </div>
                         </div>
-
                         <div class="project-card">
-                            <img src="Boat.jpeg" alt="boat E-commerce" class="project-image">
+                            <img src="Boat.jpeg" alt="boat E-commerce" class="project-image" loading="lazy">
                             <div class="project-info">
                                 <h4>boat E-commerce Website</h4>
-                                <p>Premium wireless audio product page for leading lifestyle brand.</p>
+                                <p>Premium wireless audio product page for lifestyle brand.</p>
                                 <a href="#" class="view-project">Coming soon on Behance →</a>
                             </div>
                         </div>
-
                         <div class="project-card">
-                            <img src="Reboot.jpeg" alt="Reboot Webpage" class="project-image">
+                            <img src="Reboot.jpeg" alt="Reboot Webpage" class="project-image" loading="lazy">
                             <div class="project-info">
                                 <h4>Reboot – Company Webpage</h4>
                                 <p>Clean modern corporate website with AI & marketing focus.</p>
                                 <a href="#" class="view-project">Coming soon on Behance →</a>
                             </div>
                         </div>
-
                     </div>
                 </section>
-
             </main>
         </div>
     </div>
@@ -503,6 +537,5 @@
             </p>
         </div>
     </footer>
-
 </body>
 </html>
