@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Mayur Joshi | UI/UX Designer Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <style>
+        :root {
+            --primary: #6366f1;       
+            --primary-dark: #4f46e5;
+            --dark: #0f172a;
+            --gray: #334155;
+            --light: #f8fafc;
+            --light-gray: #e2e8f0;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 1.5rem; }
+
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, #1e293b 100%);
+            color: white;
+            padding: 8rem 0 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle at 30% 20%, rgba(99,102,241,0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content { text-align: center; position: relative; z-index: 2; }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3.5rem, 8vw, 7rem);
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+            background: linear-gradient(90deg, #c084fc, #a78bfa, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tagline { font-size: 1.4rem; max-width: 700px; margin: 0 auto 2.5rem; opacity: 0.9; }
+
+        .profile-photo {
+            width: 180px; height: 180px;
+            border-radius: 50%; object-fit: cover;
+            border: 6px solid rgba(255,255,255,0.15);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            margin-bottom: 2rem;
+            transition: transform 0.4s ease;
+        }
+
+        .profile-photo:hover { transform: scale(1.08) rotate(3deg); }
+
+        .contact-bar {
+            display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex; align-items: center; gap: 0.8rem; font-size: 1.1rem; opacity: 0.95;
+        }
+
+        .contact-item a { color: white; text-decoration: none; transition: color 0.3s; }
+
+        .contact-item a:hover { color: var(--primary); }
+
+        section { padding: 6rem 0; }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem; text-align: center; margin-bottom: 3rem;
+            color: var(--primary-dark); position: relative;
+        }
+
+        h2::after {
+            content: ''; width: 80px; height: 4px; background: var(--primary);
+            position: absolute; bottom: -12px; left: 50%; transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .portfolio-grid { display: grid; grid-template-columns: 1fr 3fr; gap: 4rem; }
+
+        .sidebar {
+            background: white; border-radius: 16px; padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); height: fit-content;
+            position: sticky; top: 2rem;
+        }
+
+        .sidebar h3 { font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--primary-dark); }
+
+        .sidebar ul { list-style: none; }
+
+        .sidebar li { margin-bottom: 0.9rem; font-size: 1.05rem; color: var(--gray); }
+
+        .sidebar li strong { color: var(--dark); }
+
+        .main-content { display: flex; flex-direction: column; gap: 4rem; }
+
+        .card {
+            background: white; border-radius: 16px; padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(99,102,241,0.15); }
+
+        .card h3 { color: var(--primary-dark); font-size: 1.8rem; margin-bottom: 0.8rem; }
+
+        .card .subtitle { color: #64748b; font-style: italic; margin-bottom: 1.2rem; display: block; }
+
+        .card ul { padding-left: 1.4rem; margin-top: 1rem; }
+
+        .card li { margin-bottom: 0.7rem; color: var(--gray); }
+
+        #projects .projects-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem; margin-top: 3rem;
+        }
+
+        .project-card {
+            background: white; border-radius: 12px; overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: all 0.35s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 60px rgba(99,102,241,0.2);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .project-info { padding: 1.5rem; }
+
+        .project-info h4 { font-size: 1.35rem; margin-bottom: 0.5rem; }
+
+        .view-project {
+            display: inline-block; margin-top: 1rem;
+            color: var(--primary); font-weight: 600; text-decoration: none;
+        }
+
+        .view-project:hover { text-decoration: underline; }
+
+        footer {
+            background: var(--dark); color: white; text-align: center;
+            padding: 4rem 0 2rem;
+        }
+
+        footer a { color: var(--primary); text-decoration: none; }
+
+        @media (max-width: 1024px) {
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .sidebar { position: static; }
+        }
+
+        @media (max-width: 640px) {
+            header { padding: 6rem 0 4rem; }
+            .hero h1 { font-size: 3.5rem; }
+            h2 { font-size: 2.4rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container hero-content">
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQHAN3scEKWYWQ/profile-displayphoto-crop_800_800/B4DZwEtgztHYAM-/0/1769605567983?e=1773273600&v=beta&t=fs6mG6YGuwO6Tj6wdMRmCiSrgc0gJacgMGCsYZ8K69s" 
+                 alt="Mayur Joshi" class="profile-photo">
+
+            <h1>Mayur Joshi</h1>
+            <p class="tagline">UI/UX Designer crafting intuitive, AI-enhanced digital experiences for SaaS, Web Apps, LMS, E-commerce & Dashboards</p>
+
+            <div class="contact-bar">
+                <div class="contact-item"><i class="fas fa-envelope"></i> <a href="mailto:joshimayur498@gmail.com">joshimayur498@gmail.com</a></div>
+                <div class="contact-item"><i class="fas fa-phone"></i> +91 70281 63136</div>
+                <div class="contact-item"><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/mayur-joshi-b4ab4a208" target="_blank">LinkedIn</a></div>
+                <div class="contact-item"><i class="fab fa-behance"></i> <a href="https://www.behance.net/mayurjoshi" target="_blank">Behance</a></div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="portfolio-grid">
+
+            <aside class="sidebar">
+                <h3>Top Skills</h3>
+                <ul>
+                    <li>User Analysis</li>
+                    <li>Web Development</li>
+                    <li>Microsoft Power Apps</li>
+                    <li>Human-Centered Design</li>
+                    <li>User Research & Usability</li>
+                    <li>Agile Methodologies</li>
+                    <li>HTML / CSS / Responsive Design</li>
+                    <li>AI Tools (Midjourney, Adobe Firefly)</li>
+                </ul>
+
+                <h3 style="margin-top: 2.5rem;">Languages</h3>
+                <ul>
+                    <li>Marathi</li>
+                    <li>Hindi</li>
+                    <li>English</li>
+                    <li>Sanskrit</li>
+                </ul>
+
+                <h3 style="margin-top: 2.5rem;">Location</h3>
+                <p>Pune, Maharashtra, India</p>
+            </aside>
+
+            <main class="main-content">
+
+                <section id="about" class="card">
+                    <h2>About Me</h2>
+                    <p>UI/UX Designer based in Pune, specializing in human-centered, usability-focused design for SaaS products, education platforms, fintech, logistics, HR analytics, dashboards, and e-commerce. Experienced in end-to-end design: user research, wireframing, high-fidelity UI, prototyping, AI-powered workflows, developer collaboration, and Agile delivery. Passionate about creating scalable, intuitive digital experiences that drive user satisfaction and business impact.</p>
+                </section>
+
+                <section id="experience">
+                    <h2>Experience</h2>
+
+                    <div class="card">
+                        <h3>Brainlines Solutions Pvt. Ltd.</h3>
+                        <span class="subtitle">User Experience Designer / UI Designer  •  Sep 2024 – Present</span>
+                        <ul>
+                            <li>Full-time UI/UX Designer at Brainlines</li>
+                            <li>Website development projects for study abroad academies & e-commerce</li>
+                            <li>AI-driven SaaS product in education sector – enhanced UX with intelligent features</li>
+                            <li>Hands-on: HTML, CSS, responsive design, front-end development</li>
+                            <li>Human-Centered Design + AI prototyping tools (Midjourney, Adobe Firefly)</li>
+                            <li>Direct client collaboration, requirements gathering, Agile execution</li>
+                            <li>Delivered usable, scalable, business-aligned AI-informed designs</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Emergys Solutions Pvt. Ltd. (Formerly Ellicium)</h3>
+                        <span class="subtitle">Jr. UI/UX Designer  •  Mar 2024 – Sep 2024 (7 months)</span>
+                        <ul>
+                            <li>Designed SaaS products in AI, logistics, fintech/e-commerce, HR analytics, architecture</li>
+                            <li>Worked on AI tools & no-code applications as UX/UI Designer</li>
+                            <li>Conducted user research → applied insights to boost usability & satisfaction</li>
+                            <li>Cross-functional teams: conceptualization, prototyping, feature development</li>
+                            <li>Applied UX/UI best practices for business-objective alignment</li>
+                            <li>Developer handoff & integration into functional SaaS products</li>
+                            <li>Agile methodology throughout</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Media Cart Advertising</h3>
+                        <span class="subtitle">UI/UX & Graphic Designer  •  Sep 2021 – Dec 2023 (2+ years)</span>
+                        <ul>
+                            <li>Independently managed UX/UI projects for live websites, SaaS products, LMS platforms</li>
+                            <li>Collaborated with senior designers & developers for seamless, enhanced UX integration</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Shunya Production</h3>
+                        <span class="subtitle">Junior Graphic Designer  •  Oct 2020 – May 2021 (8 months)</span>
+                        <ul>
+                            <li>Provided visual communication & graphic design support across projects</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="education" class="card">
+                    <h2>Education</h2>
+                    <ul style="list-style:none; font-size:1.1rem; color:var(--gray);">
+                        <li><strong>MIT World Peace University</strong> — Bachelor's of Fine Arts (Applied Arts), Design and Visual Communications (Jul 2022 – May 2023)</li>
+                        <li><strong>Abhinav Kala Mahavidyalay, Tilak Road</strong> — G.D. Art, Illustration (2017 – 2022)</li>
+                        <li><strong>Abhinav Vidyalay</strong> — Diploma in Commercial Arts (G.D. Arts)</li>
+                        <li><strong>MIT Group of Institutions, Kothrud, Pune</strong> — B.F.A. (Bachelor in Commercial Arts)</li>
+                    </ul>
+                </section>
+
+                <section id="projects" class="card">
+                    <h2>Selected Projects</h2>
+                    <p style="text-align:center; margin-bottom:2rem; color:#64748b;">Real project visuals from my portfolio (save the images in the same folder as this HTML file)</p>
+
+                    <div class="projects-grid">
+
+                        <!-- 1. Company Risk Analysis -->
+                        <div class="project-card">
+                            <img src="Tableau.jpeg" alt="Company Risk Analysis Dashboard" class="project-image">
+                            <div class="project-info">
+                                <h4>Company Risk Analysis (Tableau Dashboard)</h4>
+                                <p>Interactive risk analytics dashboard visualizing complex data with clarity and insight.</p>
+                                <a href="https://www.behance.net/gallery/237802699/Company-Risk-analysis-(Tableau-Dashboard-Design)" target="_blank" class="view-project">View on Behance →</a>
+                            </div>
+                        </div>
+
+                        <!-- 2. HR Analytics -->
+                        <div class="project-card">
+                            <img src="HR.jpeg" alt="HR Analytics Application" class="project-image">
+                            <div class="project-info">
+                                <h4>HR Analytics Application</h4>
+                                <p>Modern HR dashboard focused on people analytics, metrics, and actionable insights.</p>
+                                <a href="https://www.behance.net/gallery/238087785/HR-Analytics" target="_blank" class="view-project">View on Behance →</a>
+                            </div>
+                        </div>
+
+                        <!-- 3. Ascent Fintech -->
+                        <div class="project-card">
+                            <img src="Ascent.jpeg" alt="Ascent Fintech Application" class="project-image">
+                            <div class="project-info">
+                                <h4>Ascent – Fintech Application</h4>
+                                <p>Level Up Your Money Life – AI-powered fintech app casestudy with beautiful spending insights.</p>
+                                <a href="https://www.behance.net/gallery/238882993/Fintech-Application" target="_blank" class="view-project">View on Behance →</a>
+                            </div>
+                        </div>
+
+                        <!-- 4. BookMyShow Redesign -->
+                        <div class="project-card">
+                            <img src="BookMyShow.jpeg" alt="BookMyShow App Redesign" class="project-image">
+                            <div class="project-info">
+                                <h4>BookMyShow App Redesign</h4>
+                                <p>End-to-end mobile app redesign improving user flow and booking experience.</p>
+                                <a href="https://www.behance.net/gallery/188099933/Bookmyshow-App-Redesign-Casestudy" target="_blank" class="view-project">View on Behance →</a>
+                            </div>
+                        </div>
+
+                        <!-- 5. KPI Indicator -->
+                        <div class="project-card">
+                            <img src="KPI.jpeg" alt="KPI Indicator Application" class="project-image">
+                            <div class="project-info">
+                                <h4>KPI Indicator Application</h4>
+                                <p>Dynamic KPI tracking dashboard for performance monitoring and insights.</p>
+                                <a href="https://www.behance.net/gallery/238014705/KPI-Indecator-Application" target="_blank" class="view-project">View on Behance →</a>
+                            </div>
+                        </div>
+
+                        <!-- 6. boat E-commerce -->
+                        <div class="project-card">
+                            <img src="Boat.jpeg" alt="boat E-commerce Website" class="project-image">
+                            <div class="project-info">
+                                <h4>boat E-commerce Website</h4>
+                                <p>Premium wireless audio product page design for a leading Indian lifestyle brand.</p>
+                                <a href="https://www.behance.net/gallery/237804111/Boat-NMobile-Website-Redesign" target="_blank" class="view-project">View on Behance →</a>
+                            </div>
+                        </div>
+
+                        <!-- Bonus 7. Reboot Webpage -->
+                        <div class="project-card">
+                            <img src="Reboot.jpeg" alt="Reboot Company Webpage" class="project-image">
+                            <div class="project-info">
+                                <h4>Reboot – Company Webpage Design</h4>
+                                <p>Clean, modern corporate website with AI & digital marketing focus.</p>
+                                <a href="https://www.behance.net/gallery/189783377/Reboot-Company-Website-Design" target="_blank" class="view-project">View on Behance →</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Mayur Joshi — UI/UX Designer, Pune</p>
+            <p style="margin-top:1rem;">
+                <a href="mailto:joshimayur498@gmail.com">Email</a> • 
+                <a href="https://www.linkedin.com/in/mayur-joshi-b4ab4a208" target="_blank">LinkedIn</a> • 
+                <a href="https://www.behance.net/mayurjoshi" target="_blank">Behance</a>
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
