@@ -15,7 +15,6 @@
             --dark: #0f172a;
             --gray: #334155;
             --light: #f8fafc;
-            --light-gray: #e2e8f0;
         }
 
         * { margin:0; padding:0; box-sizing:border-box; }
@@ -28,8 +27,13 @@
             min-height: 100vh;
         }
 
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 1.5rem; }
+        .container { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            padding: 0 1.5rem; 
+        }
 
+        /* ====================== HERO ====================== */
         header {
             background: linear-gradient(135deg, var(--dark) 0%, #1e293b 100%);
             color: white;
@@ -44,14 +48,13 @@
             top: -50%; left: -50%;
             width: 200%; height: 200%;
             background: radial-gradient(circle at 30% 20%, rgba(99,102,241,0.15) 0%, transparent 50%);
-            pointer-events: none;
         }
 
         .hero-content { text-align: center; position: relative; z-index: 2; }
 
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(3.5rem, 8vw, 7rem);
+            font-size: clamp(3rem, 7vw, 6.5rem);
             margin-bottom: 1rem;
             letter-spacing: -1px;
             background: linear-gradient(90deg, #c084fc, #a78bfa, #818cf8);
@@ -59,11 +62,18 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .tagline { font-size: 1.4rem; max-width: 700px; margin: 0 auto 2.5rem; opacity: 0.9; }
+        .tagline { 
+            font-size: clamp(1.1rem, 3.5vw, 1.4rem); 
+            max-width: 700px; 
+            margin: 0 auto 2.5rem; 
+            opacity: 0.9; 
+        }
 
         .profile-photo {
-            width: 180px; height: 180px;
-            border-radius: 50%; object-fit: cover;
+            width: 180px; 
+            height: 180px;
+            border-radius: 50%; 
+            object-fit: cover;
             border: 6px solid rgba(255,255,255,0.15);
             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
             margin-bottom: 2rem;
@@ -73,72 +83,136 @@
         .profile-photo:hover { transform: scale(1.08) rotate(3deg); }
 
         .contact-bar {
-            display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 1.5rem;
+            display: flex; 
+            justify-content: center; 
+            gap: 1.8rem; 
+            flex-wrap: wrap; 
+            margin-top: 1.5rem;
         }
 
         .contact-item {
-            display: flex; align-items: center; gap: 0.8rem; font-size: 1.1rem; opacity: 0.95;
+            display: flex; 
+            align-items: center; 
+            gap: 0.7rem; 
+            font-size: 1.1rem; 
+            opacity: 0.95;
         }
 
-        .contact-item a { color: white; text-decoration: none; transition: color 0.3s; }
-
+        .contact-item a { 
+            color: white; 
+            text-decoration: none; 
+            transition: color 0.3s; 
+        }
         .contact-item a:hover { color: var(--primary); }
 
+        /* ====================== SECTIONS ====================== */
         section { padding: 6rem 0; }
 
         h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 3rem; text-align: center; margin-bottom: 3rem;
-            color: var(--primary-dark); position: relative;
+            font-size: clamp(2.4rem, 5vw, 3rem);
+            text-align: center; 
+            margin-bottom: 3rem;
+            color: var(--primary-dark); 
+            position: relative;
         }
 
         h2::after {
-            content: ''; width: 80px; height: 4px; background: var(--primary);
-            position: absolute; bottom: -12px; left: 50%; transform: translateX(-50%);
+            content: ''; 
+            width: 80px; 
+            height: 4px; 
+            background: var(--primary);
+            position: absolute; 
+            bottom: -12px; 
+            left: 50%; 
+            transform: translateX(-50%);
             border-radius: 2px;
         }
 
-        .portfolio-grid { display: grid; grid-template-columns: 1fr 3fr; gap: 4rem; }
-
-        .sidebar {
-            background: white; border-radius: 16px; padding: 2.5rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08); height: fit-content;
-            position: sticky; top: 2rem;
+        .portfolio-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 3fr; 
+            gap: 4rem; 
         }
 
-        .sidebar h3 { font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--primary-dark); }
+        .sidebar {
+            background: white; 
+            border-radius: 16px; 
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+            height: fit-content;
+            position: sticky; 
+            top: 2rem;
+        }
+
+        .sidebar h3 { 
+            font-size: 1.5rem; 
+            margin-bottom: 1.5rem; 
+            color: var(--primary-dark); 
+        }
 
         .sidebar ul { list-style: none; }
 
-        .sidebar li { margin-bottom: 0.9rem; font-size: 1.05rem; color: var(--gray); }
+        .sidebar li { 
+            margin-bottom: 0.9rem; 
+            font-size: 1.05rem; 
+            color: var(--gray); 
+        }
 
-        .sidebar li strong { color: var(--dark); }
-
-        .main-content { display: flex; flex-direction: column; gap: 4rem; }
+        .main-content { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 4rem; 
+        }
 
         .card {
-            background: white; border-radius: 16px; padding: 2.5rem;
+            background: white; 
+            border-radius: 16px; 
+            padding: 2.5rem;
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(99,102,241,0.15); }
+        .card:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 20px 50px rgba(99,102,241,0.15); 
+        }
 
-        .card h3 { color: var(--primary-dark); font-size: 1.8rem; margin-bottom: 0.8rem; }
+        .card h3 { 
+            color: var(--primary-dark); 
+            font-size: 1.8rem; 
+            margin-bottom: 0.8rem; 
+        }
 
-        .card .subtitle { color: #64748b; font-style: italic; margin-bottom: 1.2rem; display: block; }
+        .card .subtitle { 
+            color: #64748b; 
+            font-style: italic; 
+            margin-bottom: 1.2rem; 
+            display: block; 
+        }
 
-        .card ul { padding-left: 1.4rem; margin-top: 1rem; }
+        .card ul { 
+            padding-left: 1.4rem; 
+            margin-top: 1rem; 
+        }
 
-        .card li { margin-bottom: 0.7rem; color: var(--gray); }
+        .card li { 
+            margin-bottom: 0.7rem; 
+            color: var(--gray); 
+        }
 
+        /* ====================== PROJECTS ====================== */
         #projects .projects-grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 2rem; margin-top: 3rem;
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem; 
+            margin-top: 3rem;
         }
 
         .project-card {
-            background: white; border-radius: 12px; overflow: hidden;
+            background: white; 
+            border-radius: 12px; 
+            overflow: hidden;
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             transition: all 0.35s ease;
         }
@@ -157,31 +231,74 @@
 
         .project-info { padding: 1.5rem; }
 
-        .project-info h4 { font-size: 1.35rem; margin-bottom: 0.5rem; }
+        .project-info h4 { 
+            font-size: 1.35rem; 
+            margin-bottom: 0.5rem; 
+        }
 
         .view-project {
-            display: inline-block; margin-top: 1rem;
-            color: var(--primary); font-weight: 600; text-decoration: none;
+            display: inline-block; 
+            margin-top: 1rem;
+            color: var(--primary); 
+            font-weight: 600; 
+            text-decoration: none;
         }
 
         .view-project:hover { text-decoration: underline; }
 
+        /* ====================== FOOTER ====================== */
         footer {
-            background: var(--dark); color: white; text-align: center;
+            background: var(--dark); 
+            color: white; 
+            text-align: center;
             padding: 4rem 0 2rem;
         }
 
-        footer a { color: var(--primary); text-decoration: none; }
-
-        @media (max-width: 1024px) {
-            .portfolio-grid { grid-template-columns: 1fr; }
-            .sidebar { position: static; }
+        footer a { 
+            color: var(--primary); 
+            text-decoration: none; 
         }
 
-        @media (max-width: 640px) {
+        /* ====================== RESPONSIVE ====================== */
+        @media (max-width: 1024px) {
+            .portfolio-grid { 
+                grid-template-columns: 1fr; 
+            }
+            .sidebar { 
+                position: static; 
+            }
+        }
+
+        @media (max-width: 768px) {
             header { padding: 6rem 0 4rem; }
-            .hero h1 { font-size: 3.5rem; }
-            h2 { font-size: 2.4rem; }
+            .container { padding: 0 1rem; }
+            section { padding: 4.5rem 0; }
+            .card { padding: 2rem; }
+            .projects-grid { 
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+                gap: 1.5rem; 
+            }
+            .project-image { height: 200px; }
+        }
+
+        @media (max-width: 480px) {
+            header { padding: 5rem 0 3.5rem; }
+            .profile-photo { 
+                width: 140px; 
+                height: 140px; 
+            }
+            .tagline { margin-bottom: 2rem; }
+            .contact-bar { gap: 1.2rem; }
+            .contact-item { font-size: 0.98rem; }
+            h2 { font-size: 2.2rem; margin-bottom: 2rem; }
+            section { padding: 3.5rem 0; }
+            .card { padding: 1.8rem; }
+            .project-image { height: 180px; }
+            .projects-grid { gap: 1.2rem; }
+        }
+
+        @media (max-width: 360px) {
+            .project-image { height: 160px; }
         }
     </style>
 </head>
@@ -234,6 +351,7 @@
 
             <main class="main-content">
 
+                <!-- About, Experience, Education sections remain exactly the same as before -->
                 <section id="about" class="card">
                     <h2>About Me</h2>
                     <p>UI/UX Designer based in Pune, specializing in human-centered, usability-focused design for SaaS products, education platforms, fintech, logistics, HR analytics, dashboards, and e-commerce. Experienced in end-to-end design: user research, wireframing, high-fidelity UI, prototyping, AI-powered workflows, developer collaboration, and Agile delivery. Passionate about creating scalable, intuitive digital experiences that drive user satisfaction and business impact.</p>
@@ -241,7 +359,7 @@
 
                 <section id="experience">
                     <h2>Experience</h2>
-
+                    <!-- Experience cards (unchanged) -->
                     <div class="card">
                         <h3>Brainlines Solutions Pvt. Ltd.</h3>
                         <span class="subtitle">User Experience Designer / UI Designer  •  Sep 2024 – Present</span>
@@ -298,79 +416,73 @@
                     </ul>
                 </section>
 
+                <!-- PROJECTS with real images -->
                 <section id="projects" class="card">
                     <h2>Selected Projects</h2>
-                    <p style="text-align:center; margin-bottom:2rem; color:#64748b;">Real project visuals from my portfolio (save the images in the same folder as this HTML file)</p>
+                    <p style="text-align:center; margin-bottom:2rem; color:#64748b;">Real project visuals • Works perfectly on mobile, tablet & desktop</p>
 
                     <div class="projects-grid">
 
-                        <!-- 1. Company Risk Analysis -->
                         <div class="project-card">
-                            <img src="Tableau.jpeg" alt="Company Risk Analysis Dashboard" class="project-image">
+                            <img src="Tableau.jpeg" alt="Company Risk Analysis" class="project-image">
                             <div class="project-info">
-                                <h4>Company Risk Analysis (Tableau Dashboard)</h4>
-                                <p>Interactive risk analytics dashboard visualizing complex data with clarity and insight.</p>
+                                <h4>Company Risk Analysis (Tableau)</h4>
+                                <p>Interactive risk analytics dashboard visualizing complex data with clarity.</p>
                                 <a href="https://www.behance.net/gallery/237802699/Company-Risk-analysis-(Tableau-Dashboard-Design)" target="_blank" class="view-project">View on Behance →</a>
                             </div>
                         </div>
 
-                        <!-- 2. HR Analytics -->
                         <div class="project-card">
-                            <img src="HR.jpeg" alt="HR Analytics Application" class="project-image">
+                            <img src="HR.jpeg" alt="HR Analytics" class="project-image">
                             <div class="project-info">
                                 <h4>HR Analytics Application</h4>
-                                <p>Modern HR dashboard focused on people analytics, metrics, and actionable insights.</p>
+                                <p>Modern HR dashboard focused on people analytics & actionable insights.</p>
                                 <a href="https://www.behance.net/gallery/238087785/HR-Analytics" target="_blank" class="view-project">View on Behance →</a>
                             </div>
                         </div>
 
-                        <!-- 3. Ascent Fintech -->
                         <div class="project-card">
-                            <img src="Ascent.jpeg" alt="Ascent Fintech Application" class="project-image">
+                            <img src="Ascent.jpeg" alt="Ascent Fintech" class="project-image">
                             <div class="project-info">
                                 <h4>Ascent – Fintech Application</h4>
-                                <p>Level Up Your Money Life – AI-powered fintech app casestudy with beautiful spending insights.</p>
+                                <p>AI-powered fintech app casestudy – Level Up Your Money Life.</p>
                                 <a href="https://www.behance.net/gallery/238882993/Fintech-Application" target="_blank" class="view-project">View on Behance →</a>
                             </div>
                         </div>
 
-                        <!-- 4. BookMyShow Redesign -->
                         <div class="project-card">
-                            <img src="BookMyShow.jpeg" alt="BookMyShow App Redesign" class="project-image">
+                            <img src="BookMyShow.jpeg" alt="BookMyShow Redesign" class="project-image">
                             <div class="project-info">
                                 <h4>BookMyShow App Redesign</h4>
-                                <p>End-to-end mobile app redesign improving user flow and booking experience.</p>
+                                <p>Complete mobile app redesign improving user flow & engagement.</p>
                                 <a href="https://www.behance.net/gallery/188099933/Bookmyshow-App-Redesign-Casestudy" target="_blank" class="view-project">View on Behance →</a>
                             </div>
                         </div>
 
-                        <!-- 5. KPI Indicator -->
                         <div class="project-card">
-                            <img src="KPI.jpeg" alt="KPI Indicator Application" class="project-image">
+                            <img src="KPI.jpeg" alt="KPI Indicator" class="project-image">
                             <div class="project-info">
                                 <h4>KPI Indicator Application</h4>
-                                <p>Dynamic KPI tracking dashboard for performance monitoring and insights.</p>
+                                <p>Dynamic KPI tracking dashboard for performance monitoring.</p>
                                 <a href="https://www.behance.net/gallery/238014705/KPI-Indecator-Application" target="_blank" class="view-project">View on Behance →</a>
                             </div>
                         </div>
 
-                        <!-- 6. boat E-commerce -->
                         <div class="project-card">
-                            <img src="Boat.jpeg" alt="boat E-commerce Website" class="project-image">
+                            <img src="Boat.jpeg" alt="boat E-commerce" class="project-image">
                             <div class="project-info">
                                 <h4>boat E-commerce Website</h4>
-                                <p>Premium wireless audio product page design for a leading Indian lifestyle brand.</p>
-                                <a href="https://www.behance.net/gallery/237804111/Boat-NMobile-Website-Redesign" target="_blank" class="view-project">View on Behance →</a>
+                                <p>Premium wireless audio product page for leading lifestyle brand.</p>
+                                <a href="#" class="view-project">Coming soon on Behance →</a>
                             </div>
                         </div>
 
-                        <!-- Bonus 7. Reboot Webpage -->
                         <div class="project-card">
-                            <img src="Reboot.jpeg" alt="Reboot Company Webpage" class="project-image">
+                            <img src="Reboot.jpeg" alt="Reboot Webpage" class="project-image">
                             <div class="project-info">
-                                <h4>Reboot – Company Webpage Design</h4>
-                                <p>Clean, modern corporate website with AI & digital marketing focus.</p>
-                                <a href="https://www.behance.net/gallery/189783377/Reboot-Company-Website-Design" target="_blank" class="view-project">View on Behance →</a>
+                                <h4>Reboot – Company Webpage</h4>
+                                <p>Clean modern corporate website with AI & marketing focus.</p>
+                                <a href="#" class="view-project">Coming soon on Behance →</a>
                             </div>
                         </div>
 
@@ -394,4 +506,3 @@
 
 </body>
 </html>
-
